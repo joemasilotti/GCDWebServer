@@ -83,7 +83,7 @@ int main(int argc, const char* argv[]) {
     
     // Use convenience method that runs server on port 8080
     // until SIGINT (Ctrl-C in Terminal) or SIGTERM is received
-    [webServer runWithPort:8080 bonjourName:nil];
+    [webServer startWithPort:8080 bonjourName:nil];
     NSLog(@"Visit %@ in your web browser", webServer.serverURL);
     
   }
@@ -139,7 +139,7 @@ webServer.addDefaultHandlerForMethod("GET", requestClass: GCDWebServerRequest.se
     return GCDWebServerDataResponse(HTML:"<html><body><p>Hello World</p></body></html>")
 }
 
-webServer.runWithPort(8080, bonjourName: nil)
+webServer.startWithPort(8080, bonjourName: nil)
 
 println("Visit \(webServer.serverURL) in your web browser")
 ```
@@ -221,7 +221,7 @@ int main(int argc, const char* argv[]) {
     
     GCDWebServer* webServer = [[GCDWebServer alloc] init];
     [webServer addGETHandlerForBasePath:@"/" directoryPath:NSHomeDirectory() indexFilename:nil cacheAge:3600 allowRangeRequests:YES];
-    [webServer runWithPort:8080];
+    [webServer startWithPort:8080 bonjourName:nil];
     
   }
   return 0;
